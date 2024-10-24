@@ -62,7 +62,7 @@ export const componentNames = {
     MapViewer:"MapViewer"
 }
 
-export const severity = ["No response", "Limited", "Moderate", "Major"]
+export const severity = ["Low", "Medium", "High", "Critical"]
 export const teamNameConfigOrderDropdown = ["1", "2", "3", "4", "Don't Include"];
 export const maxCharLengthForPrefix = 10;
 
@@ -76,15 +76,9 @@ export const teamNameConfigConstants = {
 }
 
 export const defaultChannelConstants = {
-    IncidentManagementTeam: "Incident Management Team",
-    Liaison:"Liaison",
-
     Logistics: "Logistics",
     Planning: "Planning",
-   //Recovery: "Recovery"
-   PublicInformation: "Public Information",
-   Tactical:"Tactical"
-
+    Recovery: "Recovery"
 };
 
 //Incident history constants

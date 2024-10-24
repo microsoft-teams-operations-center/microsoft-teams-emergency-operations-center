@@ -782,13 +782,9 @@ class IncidentDetails extends React.PureComponent<IIncidentDetailsProps, IIncide
             }
             else {
                 defaultAdditionalChannels = [
-                    { channelName: constants.defaultChannelConstants.IncidentManagementTeam, channelType: constants.standardChannel, hasRegexError: false, regexErrorMessage: "" },
-                    { channelName: constants.defaultChannelConstants.Liaison, channelType: constants.standardChannel, hasRegexError: false, regexErrorMessage: "" },
                     { channelName: constants.defaultChannelConstants.Logistics, channelType: constants.standardChannel, hasRegexError: false, regexErrorMessage: "" },
                     { channelName: constants.defaultChannelConstants.Planning, channelType: constants.standardChannel, hasRegexError: false, regexErrorMessage: "" },
-                    { channelName: constants.defaultChannelConstants.PublicInformation, channelType: constants.standardChannel, hasRegexError: false, regexErrorMessage: "" },
-                    { channelName: constants.defaultChannelConstants.Tactical, channelType: constants.standardChannel, hasRegexError: false, regexErrorMessage: "" }//,
-                    //{ channelName: constants.defaultChannelConstants.Recovery, channelType: constants.standardChannel, hasRegexError: false, regexErrorMessage: "" }
+                    { channelName: constants.defaultChannelConstants.Recovery, channelType: constants.standardChannel, hasRegexError: false, regexErrorMessage: "" }
                 ];
             }
         }
@@ -2112,13 +2108,13 @@ class IncidentDetails extends React.PureComponent<IIncidentDetailsProps, IIncide
                     console.log(constants.infoLogPrefix + "Site ManagedPath", teamSiteManagedPathURL);
 
                     // create news channel and tab
-                    //const newsTabLink = await this.createNewsTab(groupInfo, teamSiteDetails.webUrl, teamSiteManagedPathURL);
+                    const newsTabLink = await this.createNewsTab(groupInfo, teamSiteDetails.webUrl, teamSiteManagedPathURL);
 
                     // create assessment channel and tab
-                   // await this.createAssessmentChannelAndTab(groupInfo.id, teamSiteDetails.webUrl, teamSiteManagedPathURL);
+                    await this.createAssessmentChannelAndTab(groupInfo.id, teamSiteDetails.webUrl, teamSiteManagedPathURL);
 
                     // call method to create assessment list
-                    //await this.createAssessmentList(groupInfo.mailNickname, teamSiteDetails.id);
+                    await this.createAssessmentList(groupInfo.mailNickname, teamSiteDetails.id);
 
                     //log trace
                     this.dataService.trackTrace(this.props.appInsights, "Assessment list created ", incidentId, this.props.userPrincipalName);
@@ -3701,14 +3697,6 @@ class IncidentDetails extends React.PureComponent<IIncidentDetailsProps, IIncide
                     ...this.state.incDetailsItem,
                     additionalTeamChannels: [
                         {
-                            channelName: constants.defaultChannelConstants.IncidentManagementTeam,
-                            hasRegexError: false, regexErrorMessage: ""
-                        },
-                        {
-                            channelName: constants.defaultChannelConstants.Liaison,
-                            hasRegexError: false, regexErrorMessage: ""
-                        },
-                        {
                             channelName: constants.defaultChannelConstants.Logistics,
                             hasRegexError: false, regexErrorMessage: ""
                         },
@@ -3717,11 +3705,7 @@ class IncidentDetails extends React.PureComponent<IIncidentDetailsProps, IIncide
                             hasRegexError: false, regexErrorMessage: ""
                         },
                         {
-                            channelName: constants.defaultChannelConstants.PublicInformation,
-                            hasRegexError: false, regexErrorMessage: ""
-                        },
-                        {
-                            channelName: constants.defaultChannelConstants.Tactical,
+                            channelName: constants.defaultChannelConstants.Recovery,
                             hasRegexError: false, regexErrorMessage: ""
                         }
                     ]
@@ -4848,7 +4832,7 @@ class IncidentDetails extends React.PureComponent<IIncidentDetailsProps, IIncide
                                                 }
                                             </div>
                                         </Col>
-                                        {/* <Col xl={10} lg={12} className='guest-users-toggle'>
+                                        <Col xl={10} lg={12} className='guest-users-toggle'>
                                             <div className="inc-assets-field-flex-column">
                                                 <Toggle
                                                     checked={this.state.toggleGuestUsers}
@@ -4932,7 +4916,7 @@ class IncidentDetails extends React.PureComponent<IIncidentDetailsProps, IIncide
                                                     </div>
                                                 }
                                             </div>
-                                        </Col>**/}
+                                        </Col>
                                         {!this.state.isEditMode &&
                                             <Col xl={10} lg={12} className="additional-channels-toggle">
                                                 <div className="inc-assets-field-flex-column">
